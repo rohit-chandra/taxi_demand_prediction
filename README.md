@@ -66,27 +66,49 @@
 
 - You work as a data scientist 👨‍🔬👩‍🔬 in a ride-sharing app company 🚗 (e.g. Uber)
 
-- Your job is to help the operations team **keep the fleet as busy as possible**.
+- Your job is to help the operations team **keep the fleet as busy as possible**. 
+    - (You want drivers to be working as much as possible)
+    - Every driver that is not working is an opportuniyt that you're losing.
+    - So esstentially, the company's end goal is to keep current fleet as productive as it can be
 
-### Supply 🚕 and demand 👨‍💼
+### Supply 🚕 and demand Problem👨‍💼
 
+- Consider Centeral park in Manhanttan, every day, at every moment, there are two thing that you need to balance
+    - The total number of drivers that are around Central Park at that time, hour by hour. 
+    - The blue line shows the number of drivers who are available to pick up users around the Central Park
+    - The orange lines indicates the users who are looking for a ride
+    - What you want in order to maximize the number of pickups, in order to keep the fleet as busy as possible, is to match these two curves
 <p align="left">
 <img src="readme_pics/supply_demand_1.PNG"/>
 </p>
 
+- So we need to balance both excess of drivers and lack of drivers
+- So as a data scientist, your job is to make these curves as close as possible.
+- You can only control the no. of drivers but not no. of users requesting for rides. Buit what you do is predict. This is where ML enters into the picture
+- Imagine you'll be developing an ML model that is going to predict how many users are going to look for a taxi ride in different areas of New York at each point in time.
+- If you have this model you could plan ahead and rearrange the distribution of the fleet in order to match the demand
 <p align="left">
 <img src="readme_pics/supply_demand_2.PNG"/>
 </p>
 
+- How are we gonna build the ML model?
+- We'll use historical data of taxi rides, or  more precisely, people looking for taxi ride
+- But we don't have this data instead we have data of actual rides.
+- The question is, can we use that info to predict what's going to happen in the next hour.
+- So, at each point in time we'll have a set of historical features that we can use to generate our estimate(prediction)
+- What to predict?? - What is going to happen - mo. of rides that our users will request in each area of New York city in next hour
 <p align="left">
 <img src="readme_pics/supply_demand_3.PNG"/>
 </p>
 
 
-## Data Processing
-
+## Data Preparation
+- Let's see the steps that take us from rae data to nice formatted data that we need to do ML
 **Step 1 - Data Validation** ✔️ ❎
 
+- We're gonna start with raw data that we fetch from extral website (historical taxi rides, saying certain taxi ride happend in that part of NY at that time).
+- We collect at such events
+- Frist thing after collecting the raw data is to validate it. You have to do this in every data pipeline i.e. make sure that the events that you're using are correct
 <p align="left">
 <img src="readme_pics/step1.PNG"/>
 </p>
