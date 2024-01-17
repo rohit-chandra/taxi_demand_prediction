@@ -103,32 +103,39 @@
 
 
 ## Data Preparation
-- Let's see the steps that take us from rae data to nice formatted data that we need to do ML
+
 **Step 1 - Data Validation** ✔️ ❎
 
+- Let's see the steps that take us from rare data to nice formatted data that we need to do ML
 - We're gonna start with raw data that we fetch from extral website (historical taxi rides, saying certain taxi ride happend in that part of NY at that time).
 - We collect at such events
 - Frist thing after collecting the raw data is to validate it. You have to do this in every data pipeline i.e. make sure that the events that you're using are correct
+- Features:  pickup_datetime, pickup_location_id
 <p align="left">
 <img src="readme_pics/step1.PNG"/>
 </p>
 
 
 **Step 2 - Raw data into time-series data**
-
+- Post cleaned data, we need to transform it into time-series data( aggreagate a list of raw events into time series data)
+- We bucket events per hour and per area in NYC
+- This way we get collection of time series data
+- create new feature called `rides` = Count no. of rides per pickup_hour per pickup_location_id
+- To make sure you have complete timeseries, add to missing rows for which rides didn't happen for that pickup_hour and pickup_location_id
 <p align="left">
 <img src="readme_pics/step2.PNG"/>
 </p>
 
 
 **Step 3 - Time-series data into (features, target) data**
-
+- To apply ML, we need features and target
+- We transform the TS data through slicing operations into the right format to perform supervised ML
 <p align="left">
-<img src="readme_pics/step2.PNG"/>
+<img src="readme_pics/step2_1.PNG"/>
 </p>
 
 **Step 4 - From raw data to training data**
-
+- 
 <p align="left">
 <img src="readme_pics/step2.PNG"/>
 </p>
