@@ -30,6 +30,38 @@
     $ poetry shell
     ```
 
+4. Open free accounts at Hopsworks and CometML and copy your project names and API keys in an .env file
+    ```
+    $ cp .env.sample .env
+    # paste your 2 values there
+    ```
+
+5. Backfill the feature group with historical data
+    ```
+    $ make backfill
+    ```
+
+6. Run the training pipeline
+    ```
+    $ make training
+    ```
+
+7. Run the feature pipeline for the last hour
+    ```
+    $ make features
+    ```
+
+8. Run the inference pipeline to generate predictions for the last hour
+    ```
+    $ make predictions
+    ```
+
+## Wanna see it in action?
+
+- [Live Dashboard with model predictions](https://taxi-demand-predictor.streamlit.app/)
+- [Live Dashboard with model monitoring ](https://taxi-demand-predictor-monitoring.streamlit.app/)
+
+
 ## Problem Statement
 
 - You work as a data scientist 👨‍🔬👩‍🔬 in a ride-sharing app company 🚗 (e.g. Uber)
