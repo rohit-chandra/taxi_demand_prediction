@@ -274,17 +274,22 @@ So, engineer features is always somethings that works better or has larger impac
 <img src="readme_pics/hyper.PNG"/>
 </p>
 
-## MLOps
+### MLOps 
 
-### Batch-scoring system 🤹
+### Model deployment as Batch-scoring system 🤹
 
 - It is a sequence of steps of computing and storage that map recent data to predictions that can be used by the business
+- Batch scoring system has the following pipelines
+    - Data Preparation pipeline or Feature pipeline
+    - Model Training pipeline
+    - Prediction pipeline
 
-**Step 1 - Prepare data**
+**Pipeline 1 - Data Preparation pipeline or Feature pipeline**
 
-- First pipeline - `Data Preparation pipeline or Feature pipeline` - This component runs every hour
+- This component runs every hour
 - For eg: every hour, we extract raw data from an external service - from a data warehouse or wherever the recent data is
 - Once we fetch raw data, we then create a tabular dataset with features and target and store them in the feature store
+- Feature Store is a key component in this system that is a part of any modern MLOps platform
 - This is the Data Ingestion Pipeline
   
 <p align="left">
