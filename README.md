@@ -161,30 +161,60 @@
 </p>
 
 - How to build this sequence of models? (Strategies to find better models)
-    - Here are 4 ways to improve your model
-    - Increase training data size (if we trained 1st model on 2 yrs data, we can train new model with 1 yr of data)
+Here are 4 ways to improve your model: 
+1) **Increase training data size**
+- If we trained 1st model on 2 yrs data, we can train new model with 1 yr of data
 
 <p align="left">
 <img src="readme_pics/improve_1.PNG"/>
 </p>
 
-    - Add more features to the training data
-
+2) **Add more features to the training data**
+- Try to use exteranl factors like calendar holidays in US (Patterns during holidays in taxi demand changes a lot. Eg: Spike in taxi demand during Christmas)
+- Adding useful features can help the model get better results
 <p align="left">
 <img src="readme_pics/improve_2.PNG"/>
 </p>
 
-    - Try powerful algorithms
-
+3) **Try powerful algorithms**
+- Boosting algorithm works best with tabular dataset
 <p align="left">
 <img src="readme_pics/improve_3.PNG"/>
 </p>
 
-    - Hyperparameter tuning
+4) **Hyperparameter tuning**
 
 <p align="left">
 <img src="readme_pics/improve_4.PNG"/>
 </p>
+
+**Note:**
+- Sometimes people spend way too much time on hyperparamter tuning. Instead they can add more features (holdiday features, weather features etc) to the model or perform feature engineering, i.e. from instial raw features you derive new features from them. 
+- For eg: You could add a feature that computes the trent in average demand in the last two weeks. So, instead of giving hourly values of taxi demand for that area, you could also give provide an idea of the trend. IF we have upward trend, then this maybe a valuable singla for the model
+So, engineer features is always somethings that works better or has larger impact than tuning hyper parameters
+
+### Models
+
+1) `Baseline Model 1`
+- We just look at previous hour and return that as the prediction for the next hour
+- Calculate MAE. This will be our reference number to compare with other models in future
+- `MAE = 6.0357`
+
+2) `Baseline Model 2`
+- Noticed that our time series data has weekly seasonality
+- Eg: To predict on Friday at 5pm, we can look back at the previous Friday at 5pm and use that as the prediction
+- Calculate `MAE = 3.3737`
+- We improved our results from baseline model 1
+
+3) `Baseline Model 3`
+- We take avg of 7 days ago, 14 days agao, 21 days ago, and 28 days ago
+- Instead of taking only one estimate from last week,  we take 4 of them and average it.
+- Taking average ususaly improves the performace of ML model
+- Calculate `MAE = 2.8844`
+
+4) `ML Model`
+- XGBoost model with only previous rides. `MAE = 2.5909`
+- LightGBM model with only previous rides. `MAE = 2.5095`
 
 
 ## MLOps
