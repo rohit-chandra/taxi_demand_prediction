@@ -227,25 +227,25 @@ So, engineer features is always somethings that works better or has larger impac
 <img src="readme_pics/feat_eng_1.PNG"/>
 </p>
 
-    - Derive numerical features from `pickup_hour`
+- Derive numerical features from `pickup_hour`
 
 <p align="left">
 <img src="readme_pics/feat_eng_2.PNG"/>
 </p>
 
-    - This is how it'll look after deriving new features `hour`, `week_day` from `pickup_hour`
+- This is how it'll look after deriving new features `hour`, `week_day` from `pickup_hour`
 
 <p align="left">
 <img src="readme_pics/feat_eng_3.PNG"/>
 </p>
 
-    - `Proposed idea:` Use pickup_location_id as a categorical encoding. 
+- `Proposed idea:` Use pickup_location_id as a categorical encoding. 
 
 <p align="left">
 <img src="readme_pics/feat_eng_4.PNG"/>
 </p>
 
-    - These are areas representing location in NYC so instead of using these numbers we create `latitude` and `longitude` of some middle point in that area and use them as features. This way we provide a represtation of the data that respects distances on map
+- These are areas representing location in NYC so instead of using these numbers we create `latitude` and `longitude` of some middle point in that area and use them as features. This way we provide a represtation of the data that respects distances on map
 
 <p align="left">
 <img src="readme_pics/feat_eng_5.PNG"/>
@@ -262,6 +262,17 @@ So, engineer features is always somethings that works better or has larger impac
 <img src="readme_pics/scikit.PNG"/>
 </p>
 
+### Hyper-parameter Tuning with Optuna
+- Create N splits of the training data. Here we create 4 splits/ It's a tradeoff between the number of splits and the time it takes to train the model
+- Start with 1st split to train and 2nd split to validate to get MAE1
+- Then, take 1st two splits to train and 3rd split to validate to get MAE2
+- Finally, take 1st three splits to train and 4th split to validate to get MAE3
+- Avergae all 3 MAEs. Averging errors is a better estimation of the actual error
+- Once, you're happy with hyperparameters, you retrin the model using entire training data and at the end you test it
+
+<p align="left">
+<img src="readme_pics/hyper.PNG"/>
+</p>
 
 ## MLOps
 
