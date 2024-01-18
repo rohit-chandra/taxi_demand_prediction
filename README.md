@@ -160,7 +160,7 @@
 <img src="readme_pics/howtobuildgoodml.PNG"/>
 </p>
 
-- How to build this sequence of models? (Strategies to find better models)
+Q) **How to build this sequence of models? (Strategies to find better models)**
 Here are 4 ways to improve your model: 
 1) **Increase training data size**
 - If we trained 1st model on 2 yrs data, we can train new model with 1 yr of data
@@ -170,7 +170,7 @@ Here are 4 ways to improve your model:
 </p>
 
 2) **Add more features to the training data**
-- Try to use exteranl factors like calendar holidays in US (Patterns during holidays in taxi demand changes a lot. Eg: Spike in taxi demand during Christmas)
+- Try to use exteranl factors like calendar holidays in US (Patterns during holidays in taxi demand changes a lot. `Eg:` Spike in taxi demand during Christmas)
 - Adding useful features can help the model get better results
 <p align="left">
 <img src="readme_pics/improve_2.PNG"/>
@@ -190,7 +190,7 @@ Here are 4 ways to improve your model:
 
 **Note:**
 - Sometimes people spend way too much time on hyperparamter tuning. Instead they can add more features (holdiday features, weather features etc) to the model or perform feature engineering, i.e. from instial raw features you derive new features from them. 
-- For eg: You could add a feature that computes the trent in average demand in the last two weeks. So, instead of giving hourly values of taxi demand for that area, you could also give provide an idea of the trend. IF we have upward trend, then this maybe a valuable singla for the model
+- For `eg:` You could add a feature that computes the trent in average demand in the last two weeks. So, instead of giving hourly values of taxi demand for that area, you could also give provide an idea of the trend. IF we have upward trend, then this maybe a valuable singla for the model
 So, engineer features is always somethings that works better or has larger impact than tuning hyper parameters
 
 ### Models
@@ -215,6 +215,52 @@ So, engineer features is always somethings that works better or has larger impac
 4) `ML Model`
 - XGBoost model with only previous rides. `MAE = 2.5909`
 - LightGBM model with only previous rides. `MAE = 2.5095`
+- So we choose LightGBM since it's faster, lighter
+
+5) `LightGBM + Feature Engineering`
+- Previously, we used time series data i.e. past values for rides 1hr ago, 2 hrs ago... 10 hrs ago and so on...and we trained models on these input features
+- Feature engineering is about expanding the info that your input features have that means adding more columns to the exisiting tabular dataset
+- Three Ideas to apply feature engineering
+    - Use the feature engineered in Baseline model 3, `avg_rides_last_weeks` where we calculate avg no. of rides 7, 14, 21 and 28 days ago
+
+    <p align="left">
+<img src="readme_pics/feat_eng_1.PNG"/>
+</p>
+
+    - Derive numerical features from `pickup_hour`
+
+<p align="left">
+<img src="readme_pics/feat_eng_2.PNG"/>
+</p>
+
+    - This is how it'll look after deriving new features `hour`, `week_day` from `pickup_hour`
+
+<p align="left">
+<img src="readme_pics/feat_eng_3.PNG"/>
+</p>
+
+    - `Proposed idea:` Use pickup_location_id as a categorical encoding. 
+
+<p align="left">
+<img src="readme_pics/feat_eng_4.PNG"/>
+</p>
+
+    - These are areas representing location in NYC so instead of using these numbers we create `latitude` and `longitude` of some middle point in that area and use them as features. This way we provide a represtation of the data that respects distances on map
+
+<p align="left">
+<img src="readme_pics/feat_eng_5.PNG"/>
+</p>
+
+### Scikit-learn Pipeline
+- Useful to package different steps
+- Steps to create the pipeline
+    - Define the scikit-learn pipeline
+    - Train the model pipeline
+    - Predict
+
+<p align="left">
+<img src="readme_pics/scikit.PNG"/>
+</p>
 
 
 ## MLOps
@@ -287,5 +333,5 @@ poetry run jupyter nbconvert -to notebook -- execute notebooks/12_feature_pipeli
 - Dump it in the feature store
 - Repeat for the year 20223 and so on
 
-## Live Demo
- - work in progress
+## References
+ - [How to Quickly Design Advanced Sklearn Pipelines - by Paul Iusztin](https://towardsdatascience.com/how-to-quickly-design-advanced-sklearn-pipelines-3cc97b59ce16) 
