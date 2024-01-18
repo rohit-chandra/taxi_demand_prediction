@@ -167,18 +167,26 @@
 <p align="left">
 <img src="readme_pics/improve_1.PNG"/>
 </p>
-- Add more features to the training data
+
+    - Add more features to the training data
+
 <p align="left">
 <img src="readme_pics/improve_2.PNG"/>
 </p>
-- Try powerful algorithms
+
+    - Try powerful algorithms
+
 <p align="left">
 <img src="readme_pics/improve_3.PNG"/>
 </p>
-- Hyperparameter tuning
+
+    - Hyperparameter tuning
+
 <p align="left">
 <img src="readme_pics/improve_4.PNG"/>
 </p>
+
+
 ## MLOps
 
 ### Batch-scoring system 🤹
