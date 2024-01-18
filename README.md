@@ -130,14 +130,15 @@
 **Step 3 - Time-series data into (features, target) data**
 - To apply ML, we need features and target
 - We transform the TS data through slicing operations into the right format to perform supervised ML
+- We take sliding window of 24 (24 hours) and use it to predict the next hour
 <p align="left">
 <img src="readme_pics/step2_1.PNG"/>
 </p>
 
 **Step 4 - From raw data to training data**
-- 
+- Put the above 3 steps(notebooks) together to construct the entire `data pipeline` that is going to ingest the raw data and outputs training data that is features and targets
 <p align="left">
-<img src="readme_pics/step2.PNG"/>
+<img src="readme_pics/step2_2.PNG"/>
 </p>
 
 **Step 5 - Explore and visualize the final dataset**
@@ -149,11 +150,35 @@
 
 
 ## Model training
+- Split the data based on the cutoff date (since it's a time series data) into training and test data
+- Create a baseline model: A simple rule that you infer just by looking at the data that uses no ML, has no complexities to obtain baseline performance
+- We use MAE since it's a regression problem
+- We test this baseline model on the test data (This is baseline performance)
+- After baseline model, develop ML model. If the MAE of ML model is smaller to baseline model then we have built a better model. This is an iterative process by building multiple versions of the model
 
 <p align="left">
 <img src="readme_pics/howtobuildgoodml.PNG"/>
 </p>
 
+- How to build this sequence of models? (Strategies to find better models)
+    - Here are 4 ways to improve your model
+    - Increase training data size (if we trained 1st model on 2 yrs data, we can train new model with 1 yr of data)
+
+<p align="left">
+<img src="readme_pics/improve_1.PNG"/>
+</p>
+- Add more features to the training data
+<p align="left">
+<img src="readme_pics/improve_2.PNG"/>
+</p>
+- Try powerful algorithms
+<p align="left">
+<img src="readme_pics/improve_3.PNG"/>
+</p>
+- Hyperparameter tuning
+<p align="left">
+<img src="readme_pics/improve_4.PNG"/>
+</p>
 ## MLOps
 
 ### Batch-scoring system 🤹
