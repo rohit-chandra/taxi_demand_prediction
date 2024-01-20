@@ -24,11 +24,17 @@ geopandas = "^0.14.0"
 discordwebhook = "^1.0.3"
 fire = "^0.5.0"
 lightgbm = "^4.1.0"
+comet-ml = "^3.35.3"
+retry = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 watchdog = "^2.2.1"
 pip-tools = "^6.12.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 
 [build-system]
