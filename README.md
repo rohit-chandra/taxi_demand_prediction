@@ -307,7 +307,8 @@ So, engineer features is always somethings that works better or has larger impac
 
 **Step 3 - Generate predictions on recent data**
 - 3rd pipeline - `Prediction pipeline`
-- USe most recent features and current model we have in production to generate predictions
+- Use most recent features and current model we have in production to generate predictions
+- Use these predictions to display on UI using streamlit application and deploy 
 <p align="left">
 <img src="readme_pics/generatepredictions.PNG"/>
 </p>
